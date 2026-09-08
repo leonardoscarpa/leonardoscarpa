@@ -3,8 +3,10 @@
 @theme {
   --font-sans: "Inter", system-ui, "Segoe UI", Roboto, sans-serif;
 
-  --color-court: #1c6b4f;
-  --color-court-dark: #0f4635;
+  --color-court: #0a63e0;
+  --color-court-dark: #063f9c;
+  --color-glass: #d7f0ff;
+  --color-mesh: #6fa9d8;
   --color-line: #f5f3ea;
   --color-ball: #cddc39;
 

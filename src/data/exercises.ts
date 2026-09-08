@@ -121,6 +121,12 @@ export const EXERCISES: Exercise[] = [
             [30, 20],
           ],
         },
+        {
+          id: "coach",
+          role: "coach",
+          label: "E",
+          path: [[12, 15]],
+        },
       ],
     },
   },
@@ -154,6 +160,7 @@ export const EXERCISES: Exercise[] = [
       advanced: "Combinar con bolas que cambian de efecto (liftadas y cortadas) para variar el rebote.",
     },
     tags: ["pared", "pies", "lectura de bote"],
+    videoUrl: "https://www.youtube.com/watch?v=r3s2YGwp0kw",
     illustration: {
       caption: "Lectura del bote y desplazamiento hacia el punto donde la bola se separa de la pared.",
       actors: [
@@ -176,6 +183,12 @@ export const EXERCISES: Exercise[] = [
             [95, 178],
             [78, 175],
           ],
+        },
+        {
+          id: "coach",
+          role: "coach",
+          label: "E",
+          path: [[15, 35]],
         },
       ],
     },
@@ -325,6 +338,7 @@ export const EXERCISES: Exercise[] = [
       advanced: "Globos más bajos y rápidos, exigiendo elegir entre bandeja ofensiva o defensiva según la altura real.",
     },
     tags: ["bandeja", "red", "técnica", "contención"],
+    videoUrl: "https://www.youtube.com/watch?v=H74BtKzYiqU",
     illustration: {
       caption: "Punto de contacto alto-adelantado en la bandeja, con acompañamiento hacia la pared de fondo rival.",
       actors: [
@@ -348,6 +362,12 @@ export const EXERCISES: Exercise[] = [
             [50, 80],
             [25, 15],
           ],
+        },
+        {
+          id: "coach",
+          role: "coach",
+          label: "E",
+          path: [[78, 180]],
         },
       ],
     },
@@ -379,6 +399,7 @@ export const EXERCISES: Exercise[] = [
       advanced: "Alimentación variable en altura para exigir la decisión de cuándo usar víbora frente a bandeja o remate.",
     },
     tags: ["víbora", "red", "técnica", "velocidad"],
+    videoUrl: "https://www.youtube.com/watch?v=bklzoJ4zh3Y",
     illustration: {
       caption: "Trayectoria plana y rápida de la víbora dirigida al cuerpo del rival en la red.",
       actors: [
@@ -435,6 +456,7 @@ export const EXERCISES: Exercise[] = [
       advanced: "Se exige además dirigir el globo a un lado concreto señalado por el entrenador en el último segundo.",
     },
     tags: ["globo", "defensa", "técnica"],
+    videoUrl: "https://www.youtube.com/watch?v=WRPNuaWP02k",
     illustration: {
       caption: "Globo alto y profundo dirigido a la pareja rival peor posicionada.",
       actors: [
@@ -458,6 +480,12 @@ export const EXERCISES: Exercise[] = [
             [50, 168],
             [30, 15],
           ],
+        },
+        {
+          id: "coach",
+          role: "coach",
+          label: "E",
+          path: [[70, 86]],
         },
       ],
     },
@@ -491,6 +519,7 @@ export const EXERCISES: Exercise[] = [
       advanced: "Bolas con efecto que modifican el rebote, exigiendo ajuste fino del punto de contacto.",
     },
     tags: ["pared", "contrapared", "técnica", "defensa"],
+    videoUrl: "https://www.youtube.com/watch?v=pd6BZ6FGdvI",
     illustration: {
       caption: "Swing corto tras el rebote completo en la pared de fondo.",
       actors: [
@@ -514,6 +543,12 @@ export const EXERCISES: Exercise[] = [
             [50, 165],
             [40, 20],
           ],
+        },
+        {
+          id: "coach",
+          role: "coach",
+          label: "E",
+          path: [[25, 25]],
         },
       ],
     },
@@ -547,6 +582,7 @@ export const EXERCISES: Exercise[] = [
       advanced: "Globos con distintas alturas y profundidades, incluyendo la variante de dejar botar dos veces si conviene.",
     },
     tags: ["remate", "ataque", "definición", "técnica"],
+    videoUrl: "https://www.youtube.com/watch?v=xnFriDETXwg",
     illustration: {
       caption: "Remate buscando la salida de la bola por la pared lateral.",
       actors: [
@@ -569,6 +605,12 @@ export const EXERCISES: Exercise[] = [
             [45, 118],
             [95, 165],
           ],
+        },
+        {
+          id: "coach",
+          role: "coach",
+          label: "E",
+          path: [[70, 35]],
         },
       ],
     },
@@ -602,6 +644,7 @@ export const EXERCISES: Exercise[] = [
       advanced: "Se añade una bola de ataque real del entrenador para simular presión de partido.",
     },
     tags: ["volea", "red", "bloqueo", "técnica"],
+    videoUrl: "https://www.youtube.com/watch?v=KVniFNtb2AY",
     illustration: {
       caption: "Bloqueo de volea sin swing ante una bola rápida al cuerpo.",
       actors: [
@@ -624,6 +667,12 @@ export const EXERCISES: Exercise[] = [
             [50, 92],
             [30, 30],
           ],
+        },
+        {
+          id: "coach",
+          role: "coach",
+          label: "E",
+          path: [[25, 148]],
         },
       ],
     },
@@ -656,6 +705,7 @@ export const EXERCISES: Exercise[] = [
       advanced: "Se combina con desplazamiento real de un rival avanzando, exigiendo lectura del timing exacto.",
     },
     tags: ["chiquita", "ataque", "dejada", "red"],
+    videoUrl: "https://www.youtube.com/watch?v=syLS-fTOku0",
     illustration: {
       caption: "Dejada corta dirigida a los pies del rival que está subiendo a la red.",
       actors: [
@@ -722,6 +772,7 @@ export const EXERCISES: Exercise[] = [
       advanced: "Se añade un cuarto jugador que puede robar la bola en paralelo si detecta un cruzado corto.",
     },
     tags: ["cruzado", "táctica", "fondo", "consistencia"],
+    videoUrl: "https://www.youtube.com/watch?v=8EhgseiHmvc",
     illustration: {
       caption: "Peloteo cruzado de fondo a fondo manteniendo la diagonal.",
       actors: [
@@ -795,6 +846,12 @@ export const EXERCISES: Exercise[] = [
             [70, 90],
           ],
         },
+        {
+          id: "coach",
+          role: "coach",
+          label: "E",
+          path: [[50, 30]],
+        },
       ],
     },
   },
@@ -857,6 +914,12 @@ export const EXERCISES: Exercise[] = [
             [30, 20],
             [30, 160],
           ],
+        },
+        {
+          id: "coach",
+          role: "coach",
+          label: "E",
+          path: [[12, 15]],
         },
       ],
     },
@@ -1052,6 +1115,12 @@ export const EXERCISES: Exercise[] = [
             [65, 175],
           ],
         },
+        {
+          id: "coach",
+          role: "coach",
+          label: "E",
+          path: [[50, 20]],
+        },
       ],
     },
   },
@@ -1234,6 +1303,12 @@ export const EXERCISES: Exercise[] = [
             [50, 100],
           ],
         },
+        {
+          id: "coach",
+          role: "coach",
+          label: "E",
+          path: [[25, 15]],
+        },
       ],
     },
   },
@@ -1288,6 +1363,12 @@ export const EXERCISES: Exercise[] = [
             [50, 88],
           ],
         },
+        {
+          id: "coach",
+          role: "coach",
+          label: "E",
+          path: [[75, 25]],
+        },
       ],
     },
   },
@@ -1339,6 +1420,12 @@ export const EXERCISES: Exercise[] = [
             [50, 25],
             [50, 88],
           ],
+        },
+        {
+          id: "coach",
+          role: "coach",
+          label: "E",
+          path: [[75, 20]],
         },
       ],
     },

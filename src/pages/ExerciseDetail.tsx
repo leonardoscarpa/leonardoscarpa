@@ -3,12 +3,15 @@ import { EXERCISES } from "../data/exercises";
 import { AnimatedCourt } from "../components/AnimatedCourt";
 import { CategoryBadge, LevelBadge, PhaseBadge } from "../components/Badges";
 import { LEVEL_LABEL } from "../types/exercise";
+import { getYouTubeEmbedUrl } from "../lib/youtube";
 
 export function ExerciseDetail() {
   const { id } = useParams();
   const exercise = EXERCISES.find((e) => e.id === id);
 
   if (!exercise) return <Navigate to="/biblioteca" replace />;
+
+  const embedUrl = exercise.videoUrl ? getYouTubeEmbedUrl(exercise.videoUrl) : null;
 
   return (
     <div>
@@ -25,13 +28,31 @@ export function ExerciseDetail() {
             <AnimatedCourt spec={exercise.illustration} />
           </div>
 
-          <div className="mt-4 rounded-2xl border border-dashed border-ink-900/20 bg-white p-6 text-center">
-            <p className="text-sm font-semibold text-ink-700">Video explicativo</p>
-            <p className="mt-1 text-sm text-ink-500">
-              Espacio reservado para el video del ejercicio. Conectá tu propio video
-              (grabación propia o enlace) para completar la ficha.
-            </p>
-          </div>
+          {embedUrl ? (
+            <div className="mt-4 overflow-hidden rounded-2xl border border-ink-900/10 bg-white">
+              <div className="aspect-video w-full">
+                <iframe
+                  src={embedUrl}
+                  title={`Video: ${exercise.title}`}
+                  className="h-full w-full"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                />
+              </div>
+              <p className="px-4 py-2.5 text-xs text-ink-500">
+                Mini-video real de referencia sobre este golpe/ejercicio (YouTube). Verificá
+                que el contenido y su licencia se ajusten a tu uso antes de publicarlo.
+              </p>
+            </div>
+          ) : (
+            <div className="mt-4 rounded-2xl border border-dashed border-ink-900/20 bg-white p-6 text-center">
+              <p className="text-sm font-semibold text-ink-700">Video explicativo</p>
+              <p className="mt-1 text-sm text-ink-500">
+                Espacio reservado para el video del ejercicio. Conectá tu propio video
+                (grabación propia o enlace de YouTube) para completar la ficha.
+              </p>
+            </div>
+          )}
         </div>
 
         <div>

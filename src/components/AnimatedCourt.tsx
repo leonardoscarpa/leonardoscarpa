@@ -1,15 +1,25 @@
 import type { CourtActor, IllustrationSpec } from "../types/exercise";
 
+/**
+ * Sistema de coordenadas: x 0-100 (ancho, 10 m) · y 0-200 (largo, 20 m).
+ * Red en y=100. Paredes de fondo en y=0 e y=200.
+ * Línea de servicio a 3 m de cada pared de fondo (reglamento FIP) → y=30 e y=170.
+ */
+const SERVICE_LINE_TOP = 30;
+const SERVICE_LINE_BOTTOM = 170;
+const NET_Y = 100;
+const SIDE_GLASS_DEPTH = 40; // 4 m de cristal en cada esquina de los laterales
+
 const ROLE_STYLE: Record<
   CourtActor["role"],
-  { fill: string; stroke: string; r: number; defaultLabel: string }
+  { fill: string; stroke: string; r: number; defaultLabel: string; shape: "circle" | "diamond" }
 > = {
-  playerA1: { fill: "#2563eb", stroke: "#1e3a8a", r: 3.4, defaultLabel: "A1" },
-  playerA2: { fill: "#38bdf8", stroke: "#0369a1", r: 3.4, defaultLabel: "A2" },
-  playerB1: { fill: "#f97316", stroke: "#9a3412", r: 3.4, defaultLabel: "B1" },
-  playerB2: { fill: "#facc15", stroke: "#a16207", r: 3.4, defaultLabel: "B2" },
-  ball: { fill: "#e7fa6a", stroke: "#3f6212", r: 1.7, defaultLabel: "" },
-  coach: { fill: "#a855f7", stroke: "#581c87", r: 3.2, defaultLabel: "E" },
+  playerA1: { fill: "#2563eb", stroke: "#0f2b6b", r: 4.3, defaultLabel: "A1", shape: "circle" },
+  playerA2: { fill: "#38bdf8", stroke: "#075985", r: 4.3, defaultLabel: "A2", shape: "circle" },
+  playerB1: { fill: "#f97316", stroke: "#7c2d12", r: 4.3, defaultLabel: "B1", shape: "circle" },
+  playerB2: { fill: "#facc15", stroke: "#854d0e", r: 4.3, defaultLabel: "B2", shape: "circle" },
+  ball: { fill: "#e7fa6a", stroke: "#3f6212", r: 2, defaultLabel: "", shape: "circle" },
+  coach: { fill: "#c084fc", stroke: "#581c87", r: 4, defaultLabel: "E", shape: "diamond" },
 };
 
 function toPathD(points: [number, number][]) {
@@ -28,8 +38,9 @@ export function AnimatedCourt({
   return (
     <figure className={className}>
       <svg
-        viewBox="-6 -8 112 216"
-        className="h-auto w-full rounded-xl bg-court"
+        viewBox="-5 -6 110 212"
+        className="h-auto w-full rounded-xl"
+        style={{ backgroundColor: "var(--color-court)" }}
         role="img"
         aria-label={spec.caption ?? "Diagrama animado de pista de pádel"}
       >
@@ -47,7 +58,7 @@ export function AnimatedCourt({
           </marker>
         </defs>
 
-        <rect x="0" y="0" width="100" height="200" rx="2" fill="#1c6b4f" />
+        <rect x="0" y="0" width="100" height="200" rx="1.5" fill="var(--color-court)" />
 
         {spec.zones?.map((z, i) => (
           <polygon
@@ -62,23 +73,50 @@ export function AnimatedCourt({
           />
         ))}
 
-        <g stroke="#f5f3ea" strokeWidth="1" fill="none">
-          <rect x="0.5" y="0.5" width="99" height="199" />
-          <line x1="0" y1="70" x2="100" y2="70" />
-          <line x1="0" y1="130" x2="100" y2="130" />
-          <line x1="50" y1="70" x2="50" y2="130" />
+        {/* líneas de juego */}
+        <g stroke="#f5f3ea" strokeWidth="0.9" fill="none">
+          <rect x="0.4" y="0.4" width="99.2" height="199.2" />
+          <line x1="0" y1={SERVICE_LINE_TOP} x2="100" y2={SERVICE_LINE_TOP} />
+          <line x1="0" y1={SERVICE_LINE_BOTTOM} x2="100" y2={SERVICE_LINE_BOTTOM} />
+          <line x1="50" y1={SERVICE_LINE_TOP} x2="50" y2={NET_Y} />
+          <line x1="50" y1={NET_Y} x2="50" y2={SERVICE_LINE_BOTTOM} />
         </g>
 
-        <line x1="0" y1="100" x2="100" y2="100" stroke="#0b1220" strokeWidth="2.4" />
+        {/* red */}
+        <line x1="0" y1={NET_Y} x2="100" y2={NET_Y} stroke="#0b1220" strokeWidth="2.4" />
         <line
           x1="0"
-          y1="100"
+          y1={NET_Y}
           x2="100"
-          y2="100"
+          y2={NET_Y}
           stroke="#f5f3ea"
           strokeWidth="0.6"
           strokeDasharray="1.6 1.6"
         />
+
+        {/* paredes de fondo: cristal (3 m) + malla (1 m superior), representadas en planta */}
+        <line x1="0" y1="0.3" x2="100" y2="0.3" stroke="var(--color-glass)" strokeWidth="2.6" strokeOpacity="0.9" />
+        <line x1="0" y1="0.3" x2="100" y2="0.3" stroke="#ffffff" strokeWidth="0.6" strokeOpacity="0.8" />
+        <line x1="0" y1="199.7" x2="100" y2="199.7" stroke="var(--color-glass)" strokeWidth="2.6" strokeOpacity="0.9" />
+        <line x1="0" y1="199.7" x2="100" y2="199.7" stroke="#ffffff" strokeWidth="0.6" strokeOpacity="0.8" />
+
+        {/* paredes laterales: tramo de cristal junto a cada esquina de fondo + malla en el resto */}
+        {[0, 100].map((x) => (
+          <g key={`side-${x}`}>
+            <line x1={x} y1="0" x2={x} y2={SIDE_GLASS_DEPTH} stroke="var(--color-glass)" strokeWidth="2.2" strokeOpacity="0.85" />
+            <line x1={x} y1={200 - SIDE_GLASS_DEPTH} x2={x} y2="200" stroke="var(--color-glass)" strokeWidth="2.2" strokeOpacity="0.85" />
+            <line
+              x1={x}
+              y1={SIDE_GLASS_DEPTH}
+              x2={x}
+              y2={200 - SIDE_GLASS_DEPTH}
+              stroke="var(--color-mesh)"
+              strokeWidth="1.4"
+              strokeDasharray="1.4 1.4"
+              strokeOpacity="0.85"
+            />
+          </g>
+        ))}
 
         {spec.actors.map((actor) => {
           if (actor.path.length < 2) return null;
@@ -89,10 +127,10 @@ export function AnimatedCourt({
               d={toPathD(actor.path)}
               fill="none"
               stroke={style.stroke}
-              strokeWidth={actor.role === "ball" ? 0.5 : 0.55}
+              strokeWidth={actor.role === "ball" ? 0.55 : 0.6}
               strokeDasharray={actor.role === "ball" ? "0.4 1.8" : "1.3 1.3"}
               strokeLinecap="round"
-              opacity={0.85}
+              opacity={0.9}
               markerEnd="url(#court-arrow)"
               color={style.stroke}
             />
@@ -102,9 +140,11 @@ export function AnimatedCourt({
         {spec.actors.map((actor) => {
           const style = ROLE_STYLE[actor.role];
           const label = actor.label ?? style.defaultLabel;
+          const anchored = actor.path.length <= 1;
+          const [ax, ay] = anchored ? actor.path[0] : [0, 0];
           return (
             <g key={`dot-${actor.id}`}>
-              {actor.path.length > 1 && (
+              {!anchored && (
                 <animateMotion
                   dur={`${actor.durationSec ?? 3.2}s`}
                   repeatCount="indefinite"
@@ -112,19 +152,25 @@ export function AnimatedCourt({
                   calcMode="linear"
                 />
               )}
-              <circle
-                r={style.r}
-                fill={style.fill}
-                stroke={style.stroke}
-                strokeWidth="0.5"
-                cx={actor.path.length > 1 ? 0 : actor.path[0][0]}
-                cy={actor.path.length > 1 ? 0 : actor.path[0][1]}
-              />
+              {style.shape === "diamond" ? (
+                <rect
+                  x={ax - style.r * 0.82}
+                  y={ay - style.r * 0.82}
+                  width={style.r * 1.64}
+                  height={style.r * 1.64}
+                  fill={style.fill}
+                  stroke={style.stroke}
+                  strokeWidth="0.55"
+                  transform={`rotate(45 ${ax} ${ay})`}
+                />
+              ) : (
+                <circle r={style.r} fill={style.fill} stroke={style.stroke} strokeWidth="0.55" cx={ax} cy={ay} />
+              )}
               {label && (
                 <text
-                  x={actor.path.length > 1 ? 0 : actor.path[0][0]}
-                  y={(actor.path.length > 1 ? 0 : actor.path[0][1]) + 1.1}
-                  fontSize="2.8"
+                  x={ax}
+                  y={ay + 1.2}
+                  fontSize="3.2"
                   textAnchor="middle"
                   fill="#fff"
                   fontWeight="700"
