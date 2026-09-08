@@ -14,18 +14,50 @@ const ROLE_STYLE: Record<
   CourtActor["role"],
   { fill: string; stroke: string; r: number; defaultLabel: string; shape: "circle" | "diamond" }
 > = {
-  playerA1: { fill: "#2563eb", stroke: "#0f2b6b", r: 4.3, defaultLabel: "A1", shape: "circle" },
-  playerA2: { fill: "#38bdf8", stroke: "#075985", r: 4.3, defaultLabel: "A2", shape: "circle" },
-  playerB1: { fill: "#f97316", stroke: "#7c2d12", r: 4.3, defaultLabel: "B1", shape: "circle" },
-  playerB2: { fill: "#facc15", stroke: "#854d0e", r: 4.3, defaultLabel: "B2", shape: "circle" },
+  playerA1: { fill: "#2563eb", stroke: "#0f2b6b", r: 4.3, defaultLabel: "P", shape: "circle" },
+  playerA2: { fill: "#38bdf8", stroke: "#075985", r: 4.3, defaultLabel: "P", shape: "circle" },
+  playerB1: { fill: "#f97316", stroke: "#7c2d12", r: 4.3, defaultLabel: "P", shape: "circle" },
+  playerB2: { fill: "#facc15", stroke: "#854d0e", r: 4.3, defaultLabel: "P", shape: "circle" },
   ball: { fill: "#e7fa6a", stroke: "#3f6212", r: 2, defaultLabel: "", shape: "circle" },
-  coach: { fill: "#c084fc", stroke: "#581c87", r: 4, defaultLabel: "E", shape: "diamond" },
+  coach: { fill: "#c084fc", stroke: "#581c87", r: 4, defaultLabel: "C", shape: "diamond" },
 };
 
-function toPathD(points: [number, number][]) {
+/** Trazado recto: útil para desplazamientos y golpes planos/rápidos. */
+function straightPathD(points: [number, number][]) {
   return points
     .map((p, i) => `${i === 0 ? "M" : "L"} ${p[0]},${p[1]}`)
     .join(" ");
+}
+
+/**
+ * Trazado en arco: usado para globos/lobs. Cada tramo se dibuja como una
+ * curva cuadrática cuyo punto de control se desplaza hacia el centro de la
+ * pista (x=50), para simbolizar la trayectoria elevada de la bola.
+ */
+function curvedPathD(points: [number, number][]) {
+  if (points.length < 2) return "";
+  let d = `M ${points[0][0]},${points[0][1]}`;
+  for (let i = 1; i < points.length; i++) {
+    const [x0, y0] = points[i - 1];
+    const [x1, y1] = points[i];
+    const mx = (x0 + x1) / 2;
+    const my = (y0 + y1) / 2;
+    const dx = x1 - x0;
+    const dy = y1 - y0;
+    const len = Math.hypot(dx, dy) || 1;
+    const px = -dy / len;
+    const py = dx / len;
+    const bow = len * 0.22;
+    const cA: [number, number] = [mx + px * bow, my + py * bow];
+    const cB: [number, number] = [mx - px * bow, my - py * bow];
+    const control = Math.abs(cA[0] - 50) <= Math.abs(cB[0] - 50) ? cA : cB;
+    d += ` Q ${control[0]},${control[1]} ${x1},${y1}`;
+  }
+  return d;
+}
+
+function toPathD(points: [number, number][], curved?: boolean) {
+  return curved ? curvedPathD(points) : straightPathD(points);
 }
 
 export function AnimatedCourt({
@@ -121,14 +153,15 @@ export function AnimatedCourt({
         {spec.actors.map((actor) => {
           if (actor.path.length < 2) return null;
           const style = ROLE_STYLE[actor.role];
+          const isBall = actor.role === "ball";
           return (
             <path
               key={`path-${actor.id}`}
-              d={toPathD(actor.path)}
+              d={toPathD(actor.path, actor.curved)}
               fill="none"
               stroke={style.stroke}
-              strokeWidth={actor.role === "ball" ? 0.55 : 0.6}
-              strokeDasharray={actor.role === "ball" ? "0.4 1.8" : "1.3 1.3"}
+              strokeWidth={isBall ? 0.55 : 0.6}
+              strokeDasharray={isBall ? (actor.curved ? undefined : "0.4 1.8") : "1.3 1.3"}
               strokeLinecap="round"
               opacity={0.9}
               markerEnd="url(#court-arrow)"
@@ -148,7 +181,7 @@ export function AnimatedCourt({
                 <animateMotion
                   dur={`${actor.durationSec ?? 3.2}s`}
                   repeatCount="indefinite"
-                  path={toPathD(actor.path)}
+                  path={toPathD(actor.path, actor.curved)}
                   calcMode="linear"
                 />
               )}

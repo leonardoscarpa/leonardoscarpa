@@ -41,7 +41,6 @@ export const EXERCISES: Exercise[] = [
         {
           id: "a1",
           role: "playerA1",
-          label: "J",
           durationSec: 3.4,
           path: [
             [50, 170],
@@ -62,6 +61,11 @@ export const EXERCISES: Exercise[] = [
             [20, 150],
             [50, 30],
           ],
+        },
+        {
+          id: "coach",
+          role: "coach",
+          path: [[50, 18]],
         },
       ],
     },
@@ -98,34 +102,32 @@ export const EXERCISES: Exercise[] = [
     },
     tags: ["pies", "globo", "retroceso", "equilibrio"],
     illustration: {
-      caption: "Giro de cadera y paso cruzado hacia atrás para defender el globo.",
+      caption: "Giro de cadera y paso cruzado hacia atrás para defender el globo que llega desde el otro lado de la red.",
       actors: [
         {
           id: "a1",
           role: "playerA1",
-          label: "J",
           durationSec: 3,
           path: [
-            [50, 85],
-            [65, 130],
-            [50, 85],
+            [50, 112],
+            [64, 152],
+            [50, 112],
           ],
         },
         {
           id: "ball",
           role: "ball",
+          curved: true,
           durationSec: 3,
           path: [
             [30, 20],
-            [65, 135],
-            [30, 20],
+            [64, 152],
           ],
         },
         {
           id: "coach",
           role: "coach",
-          label: "E",
-          path: [[12, 15]],
+          path: [[25, 18]],
         },
       ],
     },
@@ -167,11 +169,10 @@ export const EXERCISES: Exercise[] = [
         {
           id: "a1",
           role: "playerA1",
-          label: "J",
           durationSec: 3,
           path: [
-            [50, 160],
-            [78, 175],
+            [50, 155],
+            [78, 172],
           ],
         },
         {
@@ -181,13 +182,12 @@ export const EXERCISES: Exercise[] = [
           path: [
             [40, 40],
             [95, 178],
-            [78, 175],
+            [78, 172],
           ],
         },
         {
           id: "coach",
           role: "coach",
-          label: "E",
           path: [[15, 35]],
         },
       ],
@@ -228,23 +228,21 @@ export const EXERCISES: Exercise[] = [
         {
           id: "a1",
           role: "playerA1",
-          label: "J",
           durationSec: 3.2,
           path: [
             [40, 175],
             [40, 140],
-            [40, 108],
+            [40, 112],
           ],
         },
         {
           id: "a2",
           role: "playerA2",
-          label: "C",
           durationSec: 3.2,
           path: [
             [70, 175],
             [70, 140],
-            [70, 108],
+            [70, 112],
           ],
         },
         {
@@ -294,7 +292,6 @@ export const EXERCISES: Exercise[] = [
         {
           id: "a1",
           role: "playerA1",
-          label: "J",
           durationSec: 4,
           path: [
             [50, 175],
@@ -340,34 +337,34 @@ export const EXERCISES: Exercise[] = [
     tags: ["bandeja", "red", "técnica", "contención"],
     videoUrl: "https://www.youtube.com/watch?v=H74BtKzYiqU",
     illustration: {
-      caption: "Punto de contacto alto-adelantado en la bandeja, con acompañamiento hacia la pared de fondo rival.",
+      caption:
+        "El jugador se ubica en posición de volea, cerca de la red; ante el globo corto retrocede apenas un par de pasos, golpea por encima de la cabeza y vuelve enseguida a su sitio.",
       actors: [
         {
           id: "a1",
           role: "playerA1",
-          label: "J",
-          durationSec: 2.6,
+          durationSec: 2.8,
           path: [
-            [50, 90],
-            [50, 80],
-            [50, 90],
+            [50, 110],
+            [50, 122],
+            [50, 110],
           ],
         },
         {
           id: "ball",
           role: "ball",
-          durationSec: 2.6,
+          curved: true,
+          durationSec: 2.8,
           path: [
-            [50, 175],
-            [50, 80],
-            [25, 15],
+            [68, 25],
+            [50, 122],
+            [28, 18],
           ],
         },
         {
           id: "coach",
           role: "coach",
-          label: "E",
-          path: [[78, 180]],
+          path: [[75, 20]],
         },
       ],
     },
@@ -401,28 +398,33 @@ export const EXERCISES: Exercise[] = [
     tags: ["víbora", "red", "técnica", "velocidad"],
     videoUrl: "https://www.youtube.com/watch?v=bklzoJ4zh3Y",
     illustration: {
-      caption: "Trayectoria plana y rápida de la víbora dirigida al cuerpo del rival en la red.",
+      caption:
+        "Intercambio rápido en la red: el jugador apenas mueve la muñeca para devolver plano al cuerpo del rival.",
       actors: [
         {
           id: "a1",
           role: "playerA1",
-          label: "J",
-          durationSec: 2.4,
+          durationSec: 2.2,
           path: [
-            [45, 85],
-            [45, 78],
-            [45, 85],
+            [50, 108],
+            [50, 112],
+            [50, 108],
           ],
         },
         {
           id: "ball",
           role: "ball",
-          durationSec: 2.4,
+          durationSec: 2.2,
           path: [
-            [45, 175],
-            [45, 78],
-            [55, 25],
+            [78, 85],
+            [50, 108],
+            [22, 88],
           ],
+        },
+        {
+          id: "coach",
+          role: "coach",
+          path: [[78, 82]],
         },
       ],
     },
@@ -458,34 +460,33 @@ export const EXERCISES: Exercise[] = [
     tags: ["globo", "defensa", "técnica"],
     videoUrl: "https://www.youtube.com/watch?v=WRPNuaWP02k",
     illustration: {
-      caption: "Globo alto y profundo dirigido a la pareja rival peor posicionada.",
+      caption: "El jugador da un paso corto al frente para interceptar el ataque y responde con un globo alto hacia el fondo rival.",
       actors: [
         {
           id: "a1",
           role: "playerA1",
-          label: "J",
-          durationSec: 2.6,
+          durationSec: 2.8,
           path: [
             [50, 175],
-            [50, 168],
+            [50, 165],
             [50, 175],
           ],
         },
         {
           id: "ball",
           role: "ball",
-          durationSec: 2.6,
+          curved: true,
+          durationSec: 2.8,
           path: [
-            [50, 90],
-            [50, 168],
-            [30, 15],
+            [72, 85],
+            [50, 165],
+            [28, 15],
           ],
         },
         {
           id: "coach",
           role: "coach",
-          label: "E",
-          path: [[70, 86]],
+          path: [[72, 82]],
         },
       ],
     },
@@ -521,16 +522,16 @@ export const EXERCISES: Exercise[] = [
     tags: ["pared", "contrapared", "técnica", "defensa"],
     videoUrl: "https://www.youtube.com/watch?v=pd6BZ6FGdvI",
     illustration: {
-      caption: "Swing corto tras el rebote completo en la pared de fondo.",
+      caption:
+        "La bola rebota primero en la pared de fondo (línea recta con el bote marcado); recién ahí el jugador la golpea con swing corto.",
       actors: [
         {
           id: "a1",
           role: "playerA1",
-          label: "J",
           durationSec: 2.8,
           path: [
-            [50, 165],
-            [50, 165],
+            [50, 163],
+            [50, 163],
           ],
         },
         {
@@ -540,14 +541,13 @@ export const EXERCISES: Exercise[] = [
           path: [
             [50, 30],
             [50, 197],
-            [50, 165],
+            [50, 163],
             [40, 20],
           ],
         },
         {
           id: "coach",
           role: "coach",
-          label: "E",
           path: [[25, 25]],
         },
       ],
@@ -584,16 +584,17 @@ export const EXERCISES: Exercise[] = [
     tags: ["remate", "ataque", "definición", "técnica"],
     videoUrl: "https://www.youtube.com/watch?v=xnFriDETXwg",
     illustration: {
-      caption: "Remate buscando la salida de la bola por la pared lateral.",
+      caption:
+        "El jugador se coloca cerca de la red para el globo corto; un pequeño salto y remata buscando la salida por la pared lateral.",
       actors: [
         {
           id: "a1",
           role: "playerA1",
-          label: "J",
           durationSec: 2.6,
           path: [
-            [45, 130],
-            [45, 130],
+            [45, 122],
+            [45, 116],
+            [45, 122],
           ],
         },
         {
@@ -601,16 +602,15 @@ export const EXERCISES: Exercise[] = [
           role: "ball",
           durationSec: 2.6,
           path: [
-            [45, 40],
+            [45, 45],
             [45, 118],
-            [95, 165],
+            [92, 168],
           ],
         },
         {
           id: "coach",
           role: "coach",
-          label: "E",
-          path: [[70, 35]],
+          path: [[68, 42]],
         },
       ],
     },
@@ -646,33 +646,33 @@ export const EXERCISES: Exercise[] = [
     tags: ["volea", "red", "bloqueo", "técnica"],
     videoUrl: "https://www.youtube.com/watch?v=KVniFNtb2AY",
     illustration: {
-      caption: "Bloqueo de volea sin swing ante una bola rápida al cuerpo.",
+      caption:
+        "El jugador apenas mueve la muñeca para bloquear la bola rápida que llega desde media pista, sin retroceder de la red.",
       actors: [
         {
           id: "a1",
           role: "playerA1",
-          label: "J",
-          durationSec: 2,
+          durationSec: 1.8,
           path: [
-            [50, 90],
-            [50, 90],
+            [50, 110],
+            [50, 112],
+            [50, 110],
           ],
         },
         {
           id: "ball",
           role: "ball",
-          durationSec: 2,
+          durationSec: 1.8,
           path: [
-            [50, 150],
-            [50, 92],
-            [30, 30],
+            [50, 60],
+            [50, 110],
+            [28, 88],
           ],
         },
         {
           id: "coach",
           role: "coach",
-          label: "E",
-          path: [[25, 148]],
+          path: [[50, 55]],
         },
       ],
     },
@@ -707,35 +707,34 @@ export const EXERCISES: Exercise[] = [
     tags: ["chiquita", "ataque", "dejada", "red"],
     videoUrl: "https://www.youtube.com/watch?v=syLS-fTOku0",
     illustration: {
-      caption: "Dejada corta dirigida a los pies del rival que está subiendo a la red.",
+      caption: "Dejada suave que apenas pasa la red, dirigida a los pies del rival que está subiendo.",
       actors: [
         {
           id: "a1",
           role: "playerA1",
-          label: "J",
           durationSec: 2.6,
           path: [
-            [50, 165],
-            [50, 165],
+            [50, 163],
+            [50, 163],
           ],
         },
         {
           id: "b1",
           role: "playerB1",
-          label: "R",
           durationSec: 2.6,
           path: [
-            [50, 60],
-            [50, 82],
+            [55, 55],
+            [55, 82],
           ],
         },
         {
           id: "ball",
           role: "ball",
+          curved: true,
           durationSec: 2.6,
           path: [
-            [50, 165],
-            [50, 82],
+            [50, 163],
+            [55, 82],
           ],
         },
       ],
@@ -774,8 +773,26 @@ export const EXERCISES: Exercise[] = [
     tags: ["cruzado", "táctica", "fondo", "consistencia"],
     videoUrl: "https://www.youtube.com/watch?v=8EhgseiHmvc",
     illustration: {
-      caption: "Peloteo cruzado de fondo a fondo manteniendo la diagonal.",
+      caption: "Peloteo cruzado de fondo a fondo manteniendo la diagonal (golpe plano, no globo).",
       actors: [
+        {
+          id: "a1",
+          role: "playerA1",
+          durationSec: 3,
+          path: [
+            [25, 178],
+            [25, 178],
+          ],
+        },
+        {
+          id: "b1",
+          role: "playerB1",
+          durationSec: 3,
+          path: [
+            [75, 22],
+            [75, 22],
+          ],
+        },
         {
           id: "ball",
           role: "ball",
@@ -822,34 +839,31 @@ export const EXERCISES: Exercise[] = [
     },
     tags: ["formación", "red", "coordinación", "táctica"],
     illustration: {
-      caption: "La pareja se desplaza en bloque hacia el lado donde se dirige el golpe propio.",
+      caption: "La pareja se desplaza en bloque hacia el lado donde se dirige el golpe propio, siempre por delante de la red.",
       actors: [
         {
           id: "a1",
           role: "playerA1",
-          label: "A1",
           durationSec: 3,
           path: [
-            [30, 90],
-            [65, 90],
-            [30, 90],
+            [30, 110],
+            [65, 110],
+            [30, 110],
           ],
         },
         {
           id: "a2",
           role: "playerA2",
-          label: "A2",
           durationSec: 3,
           path: [
-            [70, 90],
-            [95, 90],
-            [70, 90],
+            [70, 110],
+            [95, 110],
+            [70, 110],
           ],
         },
         {
           id: "coach",
           role: "coach",
-          label: "E",
           path: [[50, 30]],
         },
       ],
@@ -884,41 +898,39 @@ export const EXERCISES: Exercise[] = [
     },
     tags: ["rotación", "defensa", "táctica", "coordinación"],
     illustration: {
-      caption: "Rotación de la pareja: uno baja a defender el globo, el otro cubre el centro de la red.",
+      caption: "Uno de la pareja baja a defender el globo (curva) mientras el otro se desplaza al centro de la red para cubrir.",
       actors: [
         {
           id: "a1",
           role: "playerA1",
-          label: "A1",
           durationSec: 3.2,
           path: [
-            [30, 90],
-            [30, 160],
+            [30, 110],
+            [30, 158],
           ],
         },
         {
           id: "a2",
           role: "playerA2",
-          label: "A2",
           durationSec: 3.2,
           path: [
-            [70, 90],
-            [50, 88],
+            [70, 110],
+            [50, 108],
           ],
         },
         {
           id: "ball",
           role: "ball",
+          curved: true,
           durationSec: 3.2,
           path: [
             [30, 20],
-            [30, 160],
+            [30, 158],
           ],
         },
         {
           id: "coach",
           role: "coach",
-          label: "E",
           path: [[12, 15]],
         },
       ],
@@ -953,12 +965,11 @@ export const EXERCISES: Exercise[] = [
     },
     tags: ["ataque", "centro", "táctica", "definición"],
     illustration: {
-      caption: "Golpe de ataque dirigido a la zona central entre los dos rivales.",
+      caption: "Golpe de ataque dirigido a la zona central entre los dos rivales, línea recta y plana con flecha de dirección.",
       actors: [
         {
           id: "a1",
           role: "playerA1",
-          label: "A",
           durationSec: 2.8,
           path: [
             [40, 165],
@@ -968,7 +979,6 @@ export const EXERCISES: Exercise[] = [
         {
           id: "b1",
           role: "playerB1",
-          label: "B1",
           durationSec: 2.8,
           path: [
             [30, 85],
@@ -978,7 +988,6 @@ export const EXERCISES: Exercise[] = [
         {
           id: "b2",
           role: "playerB2",
-          label: "B2",
           durationSec: 2.8,
           path: [
             [70, 85],
@@ -1026,26 +1035,24 @@ export const EXERCISES: Exercise[] = [
     },
     tags: ["remate", "cobertura", "táctica", "red"],
     illustration: {
-      caption: "El compañero cubre la diagonal contraria mientras el otro remata.",
+      caption: "El compañero cubre la diagonal contraria mientras el otro remata (línea recta y rápida, no globo).",
       actors: [
         {
           id: "a1",
           role: "playerA1",
-          label: "A1",
           durationSec: 2.8,
           path: [
-            [30, 90],
-            [30, 90],
+            [30, 110],
+            [30, 110],
           ],
         },
         {
           id: "a2",
           role: "playerA2",
-          label: "A2",
           durationSec: 2.8,
           path: [
-            [70, 90],
-            [55, 100],
+            [70, 110],
+            [55, 120],
           ],
         },
         {
@@ -1054,8 +1061,8 @@ export const EXERCISES: Exercise[] = [
           durationSec: 2.8,
           path: [
             [30, 40],
-            [30, 90],
-            [85, 30],
+            [30, 110],
+            [85, 45],
           ],
         },
       ],
@@ -1096,29 +1103,26 @@ export const EXERCISES: Exercise[] = [
         {
           id: "a1",
           role: "playerA1",
-          label: "A1",
           durationSec: 4,
           path: [
             [35, 175],
-            [35, 90],
+            [35, 108],
             [35, 175],
           ],
         },
         {
           id: "a2",
           role: "playerA2",
-          label: "A2",
           durationSec: 4,
           path: [
             [65, 175],
-            [65, 90],
+            [65, 108],
             [65, 175],
           ],
         },
         {
           id: "coach",
           role: "coach",
-          label: "E",
           path: [[50, 20]],
         },
       ],
@@ -1155,12 +1159,11 @@ export const EXERCISES: Exercise[] = [
     },
     tags: ["decisión", "globo", "passing", "lectura"],
     illustration: {
-      caption: "Lectura de la posición rival para elegir entre globo profundo o passing por la pared.",
+      caption: "Con el rival adelantado en la red, se elige el passing por la pared: línea recta, rápida y baja.",
       actors: [
         {
           id: "a1",
           role: "playerA1",
-          label: "J",
           durationSec: 3,
           path: [
             [45, 170],
@@ -1170,11 +1173,10 @@ export const EXERCISES: Exercise[] = [
         {
           id: "b1",
           role: "playerB1",
-          label: "R",
           durationSec: 3,
           path: [
-            [45, 85],
-            [45, 85],
+            [45, 90],
+            [45, 90],
           ],
         },
         {
@@ -1183,7 +1185,7 @@ export const EXERCISES: Exercise[] = [
           durationSec: 3,
           path: [
             [45, 170],
-            [90, 60],
+            [88, 65],
           ],
         },
       ],
@@ -1224,17 +1226,15 @@ export const EXERCISES: Exercise[] = [
         {
           id: "a1",
           role: "playerA1",
-          label: "J",
           durationSec: 3,
           path: [
             [45, 175],
-            [45, 110],
+            [45, 112],
           ],
         },
         {
           id: "a2",
           role: "playerA2",
-          label: "C",
           durationSec: 3,
           path: [
             [65, 175],
@@ -1282,31 +1282,30 @@ export const EXERCISES: Exercise[] = [
     },
     tags: ["decisión", "transición", "globo", "red"],
     illustration: {
-      caption: "Lectura del globo rival para decidir entre resolver desde la red o iniciar la bajada.",
+      caption: "El globo rival (curva) determina si el jugador resuelve desde la red o inicia la bajada.",
       actors: [
         {
           id: "a1",
           role: "playerA1",
-          label: "J",
           durationSec: 3,
           path: [
-            [50, 90],
-            [50, 90],
+            [50, 110],
+            [50, 110],
           ],
         },
         {
           id: "ball",
           role: "ball",
+          curved: true,
           durationSec: 3,
           path: [
             [50, 20],
-            [50, 100],
+            [50, 108],
           ],
         },
         {
           id: "coach",
           role: "coach",
-          label: "E",
           path: [[25, 15]],
         },
       ],
@@ -1347,11 +1346,10 @@ export const EXERCISES: Exercise[] = [
         {
           id: "a1",
           role: "playerA1",
-          label: "J",
           durationSec: 2.6,
           path: [
-            [50, 90],
-            [50, 90],
+            [50, 110],
+            [50, 110],
           ],
         },
         {
@@ -1359,15 +1357,14 @@ export const EXERCISES: Exercise[] = [
           role: "ball",
           durationSec: 2.6,
           path: [
-            [50, 30],
-            [50, 88],
+            [50, 35],
+            [50, 108],
           ],
         },
         {
           id: "coach",
           role: "coach",
-          label: "E",
-          path: [[75, 25]],
+          path: [[72, 28]],
         },
       ],
     },
@@ -1400,31 +1397,30 @@ export const EXERCISES: Exercise[] = [
     },
     tags: ["decisión", "ataque", "bandeja", "víbora", "remate"],
     illustration: {
-      caption: "La altura del globo determina la elección entre bandeja, víbora o remate.",
+      caption: "El globo rival (curva) marca la altura de contacto y con ella la elección entre bandeja, víbora o remate.",
       actors: [
         {
           id: "a1",
           role: "playerA1",
-          label: "J",
           durationSec: 2.6,
           path: [
-            [50, 88],
-            [50, 88],
+            [50, 110],
+            [50, 110],
           ],
         },
         {
           id: "ball",
           role: "ball",
+          curved: true,
           durationSec: 2.6,
           path: [
             [50, 25],
-            [50, 88],
+            [50, 108],
           ],
         },
         {
           id: "coach",
           role: "coach",
-          label: "E",
           path: [[75, 20]],
         },
       ],
@@ -1558,21 +1554,19 @@ export const EXERCISES: Exercise[] = [
         {
           id: "a1",
           role: "playerA1",
-          label: "A1",
           durationSec: 3.2,
           path: [
             [35, 175],
-            [35, 100],
+            [35, 108],
           ],
         },
         {
           id: "a2",
           role: "playerA2",
-          label: "A2",
           durationSec: 3.2,
           path: [
             [65, 175],
-            [65, 100],
+            [65, 108],
           ],
         },
       ],
@@ -1607,35 +1601,34 @@ export const EXERCISES: Exercise[] = [
     },
     tags: ["punto condicionado", "transición", "bajada", "pelota viva"],
     illustration: {
-      caption: "La pareja en red debe bajar junta y coordinada ante cualquier globo profundo.",
+      caption: "La pareja en red debe bajar junta y coordinada ante el globo profundo rival (trayectoria en curva).",
       actors: [
         {
           id: "a1",
           role: "playerA1",
-          label: "A1",
           durationSec: 3.2,
           path: [
-            [35, 90],
-            [35, 160],
+            [35, 108],
+            [35, 158],
           ],
         },
         {
           id: "a2",
           role: "playerA2",
-          label: "A2",
           durationSec: 3.2,
           path: [
-            [65, 90],
-            [65, 160],
+            [65, 108],
+            [65, 158],
           ],
         },
         {
           id: "ball",
           role: "ball",
+          curved: true,
           durationSec: 3.2,
           path: [
             [50, 20],
-            [50, 160],
+            [50, 158],
           ],
         },
       ],

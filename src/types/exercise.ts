@@ -78,6 +78,8 @@ export interface CourtActor {
   label?: string;
   /** Duración del ciclo de animación en segundos. */
   durationSec?: number;
+  /** Dibuja el recorrido como una curva (arco) en vez de tramos rectos — para globos/lobs. */
+  curved?: boolean;
 }
 
 export interface CourtZone {
